@@ -1,0 +1,46 @@
+<!-- written by Omer Tashir, 19/09/2015 -->
+<!DOCTYPE html>
+<html lang="en" data-ng-app="main_module">
+<head>
+    <meta charset="UTF-8">
+    <title>Blazemeter Exercise</title>
+    <link rel="stylesheet" href="../stylesheets/style.css">
+    <script src="../javascripts/angular.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.4/angular-material.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
+    <meta name="viewport" content="initial-scale=1" />
+</head>
+
+<body data-ng-controller="main_controller">
+    <div class="main-wrapper">
+        <header>
+            <div class="left-part">
+            <select class="select_profile">
+                <option class="select-profiles">Profiles</option>
+            </select>
+            Name<input type="text" data-ng-model="name_search_input" class="name_search_input">
+            Bio<input type="text" data-ng-model="bio_search_input" class="bio_search_input">
+                <button class="md-raised md-primary md-button md-default-theme special">
+                    <span class="ng-scope">Create</span>
+                    <div class="md-ripple-container"></div>
+                </button>
+            </div>
+            <div class="right-part">
+                <input type="checkbox" id="checkbox_private">
+                <label for="checkbox_private" class="label_checkbox_private">Show Private</label>
+            </div>
+        </header>
+        <div class="profiles-card" data-ng-init="getProfiles()">
+            <div class="cards" data-ng-repeat="profile in profiles | filter:name_search_input">
+                <div ng-init="getFullProfileData({{profile.id}})">
+                    <p class="FullName">{{full_profile.bio}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script src="../../modules/main_module/main_module.js"></script>
+<script src="../javascripts/angular-animate.min.js"></script>
+<script src="../../controllers/main_controller/main_controller.js"></script>

@@ -1,0 +1,76 @@
+body{
+    font-size: 11px;
+    font-family: tahoma;
+}
+.main-wrapper{
+    float: left;
+    width: 50%;
+    height: 418px;
+    background-color: #F2F2F2;
+}
+.cards{
+
+}
+.name_search_input{
+
+    margin-left: 10px;
+
+    margin-right: 20px;
+}
+.bio_search_input{
+
+    margin-left: 10px;
+
+    margin-right: 10px;
+}
+.create_button{
+
+}
+.left-part{
+
+    width: 74%;
+
+    background-color: white;
+
+    border-bottom: 1px solid #E5E5E5;
+
+    padding-bottom: 15px;
+
+    height: 44px;
+
+    float: left;
+}
+.right-part{
+
+    float: right;
+
+    width: 25%;
+
+    background-color: white;
+
+    height: 44px;
+
+    border-bottom: 1px solid #E5E5E5;
+
+    padding-bottom: 15px;
+
+    border-left: 1px solid #F1F1F1;
+}
+#checkbox_private{
+
+    position: absolute;
+
+    margin: 20px 0px 0px 20px;
+}
+.label_checkbox_private{
+    position: absolute;      margin: 20px 0px 0px 41px;}
+.special{
+    background: #4E69F6 !important;
+    font-size: 11px !important;
+    color: white !important;
+}
+.select_profile{
+    padding-right: 15px;
+    margin-right: 25px;
+    margin-left: 35px;
+}
