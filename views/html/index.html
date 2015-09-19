@@ -13,28 +13,34 @@
 
 <body data-ng-controller="main_controller">
     <div class="main-wrapper">
-        <header>
+        <header data-ng-init="getProfiles()">
             <div class="left-part">
-            <select class="select_profile">
-                <option class="select-profiles">Profiles</option>
+            <select data-ng-options="option.id as option.full for option in profiles" data-ng-model="option.id" class="select_profile">
+                <option value="">Select Profile</option>
             </select>
-            Name<input type="text" data-ng-model="name_search_input" class="name_search_input">
-            Bio<input type="text" data-ng-model="bio_search_input" class="bio_search_input">
+            Name<input type="text" data-ng-model="name_search_input" class="name_search_input" placeholder="enter name..">
+            Bio<input type="text" data-ng-model="bio_search_input" class="bio_search_input" placeholder="enter bio..">
                 <button class="md-raised md-primary md-button md-default-theme special">
-                    <span class="ng-scope">Create</span>
+                    <span class="ng-scope" data-ng-click="create_card({{name_search_input}},{{bio_search_input}})">Create</span>
                     <div class="md-ripple-container"></div>
                 </button>
             </div>
             <div class="right-part">
-                <input type="checkbox" id="checkbox_private">
+                <input type="checkbox" id="checkbox_private" data-ng-click="changeCheck()">
                 <label for="checkbox_private" class="label_checkbox_private">Show Private</label>
+                <img class="grid-header-refresh-icon" src="../icons/update17.png" alt="refresh"
+                     data-ng-click="refresh()">
             </div>
         </header>
-        <div class="profiles-card" data-ng-init="getProfiles()">
-            <div class="cards" data-ng-repeat="profile in profiles | filter:name_search_input">
-                <div ng-init="getFullProfileData({{profile.id}})">
-                    <p class="FullName">{{full_profile.bio}}</p>
+        <input type="text" data-ng-model="search_words" class="search_words" placeholder="search..">
+        <div ng-init="{{getFullProfileData()}}">
+            <div class="cards" data-ng-repeat="profile in fullProfiles | orderBy:sort_order | filter:search_words | filter:{isprivate:checked_status}">
+                <div class="profile_card" data-ng-click="populate(profile)">
+                    <img class="card_img" src="http://graph.facebook.com/{{profile.fbprof}}/picture">
+                    <p class="card_name">{{profile.full}}</p>
+                    <p class="card_bio">{{profile.bio}}</p>
                 </div>
+                <div data-ng-bind-html-unsafe="expression"></div>
             </div>
         </div>
     </div>
